@@ -14,8 +14,7 @@ static const char black[]  = {0x1b, '[', '1', ';', '3', '0', 'm', 0};
 static const char red[]    = {0x1b, '[', '1', ';', '3', '1', 'm', 0};
 static const char green[]  = {0x1b, '[', '0', ';', '3', '2', 'm', 0};
 static const char yellow[] = {0x1b, '[', '1', ';', '3', '3', 'm', 0};
-// static const char blue[]   = {0x1b, '[', '1', ';', '3', '4', 'm', 0};
-static const char blue[]   = {0x1b, '[', '0', ';', '3', '5', 'm', 0}; //purple
+static const char blue[]   = {0x1b, '[', '1', ';', '3', '4', 'm', 0};
 static const char purple[] = {0x1b, '[', '0', ';', '3', '5', 'm', 0};
 static const char cyan[]   = {0x1b, '[', '0', ';', '3', '6', 'm', 0};
 
