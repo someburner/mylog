@@ -91,17 +91,41 @@ void vdebug(const std::string& msg, const std::string& file, std::size_t line);
 void vall(const std::string& msg, const std::string& file, std::size_t line);
 
 /* Macros */
-#ifdef MYLOG_ENABLED
-/* Internal */
-#define __MYLOG_LOG(level, msg) MYLOG::level(msg, MYLOG::file_name(__FILE__), __LINE__);
-/* External */
-#define MYLOG_LFLM(level, file, line, msg) MYLOG::level(msg, MYLOG::file_name(file), line)
+#ifdef __CPP_REDIS_LOGGING_ENABLED
+   /* Internal */
+   #ifndef __CPP_REDIS_LOG
+   #define __CPP_REDIS_LOG(level, msg) cpp_redis::level(msg, file_name(__FILE__), __LINE__);
+   #endif
+   /* External */
+   #ifndef RLOG_LFLM
+   #define RLOG_LFLM(level, file, line, msg) cpp_redis::level(msg, file_name(file), line)
+   #endif
 #else
-/* Internal */
-#define __MYLOG_LOG(level, msg)
-/* External */
-#define MYLOG_LFLM(level, file, line, msg)
+   /* Internal */
+   #ifndef RLOG_LFLM
+   #define __CPP_REDIS_LOG(level, msg)
+   #endif
+   /* External */
+   #ifndef RLOG_LFLM
+   #define RLOG_LFLM(level, file, line, msg)
+   #endif
+#endif /* __CPP_REDIS_LOGGING_ENABLED */
 
+/* Macros */
+#ifdef MYLOG_ENABLED
+   #ifndef __MYLOG_LOG
+   #define __MYLOG_LOG(level, msg) MYLOG::level(msg, MYLOG::file_name(__FILE__), __LINE__);
+   #endif
+   #ifndef MYLOG_LFLM
+   #define MYLOG_LFLM(level, file, line, msg) MYLOG::level(msg, MYLOG::file_name(file), line)
+   #endif
+#else
+   #ifndef __MYLOG_LOG
+   #define __MYLOG_LOG(level, msg)
+   #endif
+   #ifndef MYLOG_LFLM
+   #define MYLOG_LFLM(level, file, line, msg)
+   #endif
 #endif /* MYLOG_ENABLED */
 
 } /* MYLOG */
