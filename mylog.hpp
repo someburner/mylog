@@ -2,16 +2,15 @@
 
 #include <memory>
 #include <mutex>
+#include <stdio.h>
 #include <string>
 
+namespace MYLOG {
 /* Hack */
-#include <stdio.h>
 constexpr const char* str_end(const char *str) { return *str ? str_end(str + 1) : str; }
 constexpr bool str_slant(const char *str) { return *str == '/' ? true : (*str ? str_slant(str + 1) : false); }
 constexpr const char* r_slant(const char* str) { return *str == '/' ? (str + 1) : r_slant(str - 1); }
 constexpr const char* file_name(const char* str) { return str_slant(str) ? r_slant(str_end(str)) : str; }
-
-namespace MYLOG {
 
 /* logger_iface - should be inherited by any class to be used for logging */
 class logger_iface {
@@ -94,9 +93,9 @@ void vall(const std::string& msg, const std::string& file, std::size_t line);
 /* Macros */
 #ifdef MYLOG_ENABLED
 /* Internal */
-#define __MYLOG_LOG(level, msg) MYLOG::level(msg, file_name(__FILE__), __LINE__);
+#define __MYLOG_LOG(level, msg) MYLOG::level(msg, MYLOG::file_name(__FILE__), __LINE__);
 /* External */
-#define MYLOG_LFLM(level, file, line, msg) MYLOG::level(msg, file_name(file), line)
+#define MYLOG_LFLM(level, file, line, msg) MYLOG::level(msg, MYLOG::file_name(file), line)
 #else
 /* Internal */
 #define __MYLOG_LOG(level, msg)
