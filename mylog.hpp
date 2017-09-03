@@ -26,6 +26,7 @@ public:
   /* General Purpose */
   virtual void error(const std::string& msg, const std::string& file, std::size_t line) = 0;
   virtual void warn(const std::string& msg, const std::string& file, std::size_t line)  = 0;
+  virtual void okay(const std::string& msg, const std::string& file, std::size_t line)  = 0;
   virtual void info(const std::string& msg, const std::string& file, std::size_t line)  = 0;
   virtual void debug(const std::string& msg, const std::string& file, std::size_t line) = 0;
   /* Internal use */
@@ -44,9 +45,10 @@ public:
     warn   = 1,
     info   = 2,
     debug  = 3,
-    vinfo  = 4,
-    vdebug = 5,
-    vall   = 6
+    okay   = 4,
+    vinfo  = 5,
+    vdebug = 6,
+    vall   = 7
   };
 
 public:
@@ -62,6 +64,7 @@ public:
    /* General Purpose */
   void error(const std::string& msg, const std::string& file, std::size_t line);
   void warn(const std::string& msg, const std::string& file, std::size_t line);
+  void okay(const std::string& msg, const std::string& file, std::size_t line);
   void info(const std::string& msg, const std::string& file, std::size_t line);
   void debug(const std::string& msg, const std::string& file, std::size_t line);
   /* Internal use */
@@ -82,6 +85,7 @@ extern std::unique_ptr<logger_iface> active_logger;
 /* General Purpose */
 void error(const std::string& msg, const std::string& file, std::size_t line);
 void warn(const std::string& msg, const std::string& file, std::size_t line);
+void okay(const std::string& msg, const std::string& file, std::size_t line);
 void info(const std::string& msg, const std::string& file, std::size_t line);
 void debug(const std::string& msg, const std::string& file, std::size_t line);
 /* Internal use */

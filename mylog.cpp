@@ -36,8 +36,15 @@ void logger::warn(const std::string& msg, const std::string& file, std::size_t l
   }
 }
 
+void logger::okay(const std::string& msg, const std::string& file, std::size_t line) {
+  if (m_level >= log_level::okay) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    std::cout << "[" << green << "OK" << normal << "][" << file << ":" << line << "] " << green << msg << normal << std::endl;
+  }
+}
+
 void logger::info(const std::string& msg, const std::string& file, std::size_t line) {
-  if (m_level >= log_level::info) {
+  if (m_level >= log_level::warn) {
     std::lock_guard<std::mutex> lock(m_mutex);
     std::cout << "[INFO][" << file << ":" << line << "] " << msg << std::endl;
   }
@@ -49,6 +56,7 @@ void logger::debug(const std::string& msg, const std::string& file, std::size_t 
     std::cout << "[" << blue << "DEBUG" << normal << "][" << file << ":" << line << "] " << blue << msg << normal << std::endl;
   }
 }
+
 
 /* Internal use */
 void logger::vinfo(const std::string& msg, const std::string& file, std::size_t line) {
@@ -74,7 +82,7 @@ void logger::vall(const std::string& msg, const std::string& file, std::size_t l
 }
 
 
-/* General Purpose */
+/* General Purpose -- careful make sure these match */
 void error(const std::string& msg, const std::string& file, std::size_t line) {
   if (active_logger)
     active_logger->error(msg, file, line);
@@ -82,6 +90,10 @@ void error(const std::string& msg, const std::string& file, std::size_t line) {
 void warn(const std::string& msg, const std::string& file, std::size_t line) {
   if (active_logger)
     active_logger->warn(msg, file, line);
+}
+void okay(const std::string& msg, const std::string& file, std::size_t line) {
+  if (active_logger)
+    active_logger->okay(msg, file, line);
 }
 void info(const std::string& msg, const std::string& file, std::size_t line) {
   if (active_logger)
