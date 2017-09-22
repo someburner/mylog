@@ -1,8 +1,24 @@
 # mylog
 
 Simple cpp logger- mostly stolen from [tacopie](https://github.com/Cylix/tacopie), which worked well (thx dude), but
-I found the formatting to be far too verbose, and obviously not trying to link against tacopie for all my projects.
+I found the formatting to be far too verbose, and obviously not trying to link against tacopie for all my projects.. or use
+cmake..
 
+## Install
+
+**Before installing:** glance at the top of the Makefile and make sure the install location is kosher. Written by an Ubuntu user so directories are:
+
+* `/usr/local/include/mylog`: aka creates `mylog` folder and copies **mylog.hpp** there.
+* `/usr/local/lib`: **mylog.a** will be copied here.
+
+*Then..*
+
+```sh
+git clone https://github.com/someburner/mylog.git
+cd mylog
+make
+sudo make install
+```
 
 ## Usage
 
