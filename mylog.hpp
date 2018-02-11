@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <mutex>
+#include <cstdarg> /* va_list */
 #include <stdio.h>
 #include <string>
 
