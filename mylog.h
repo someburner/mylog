@@ -31,4 +31,10 @@ static const char _inv[] = {0x1b, '[', '0', ';', '0', '7', 'm', 0}; /* inverted/
 #define c_paintf_udl(...)    c_paintf(_udl, __VA_ARGS__)
 
 
+#define logc      c_paintf_blu
+#define logwarnc  c_paintf_ylw
+#define logerrc   c_paintf_red
+#define logokc    c_paintf_grn
+#define loginfoc  c_paintf_wht
+
 #endif
