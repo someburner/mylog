@@ -38,8 +38,19 @@ static const char blk_pur[] = {0x1b, '[', '7', ';', '3', '5', 'm', 0}; /* purple
 static const char blk_cya[] = {0x1b, '[', '7', ';', '3', '6', 'm', 0}; /* cyan */
 static const char blk_wht[] = {0x1b, '[', '7', ';', '0', '1', 'm', 0}; /* bold white */
 
- // \\033[7;36;40m  - black text on cyan
- // \\033[1;36;49m  - bold cyan
+/* .. on blu */
+static const char _nrm_blu[] = {0x1b, '[', '7', ';', '3', '9', ';', '4', '4', 'm', 0}; /* normal */
+static const char _blk_blu[] = {0x1b, '[', '7', ';', '3', '0', ';', '4', '4', 'm', 0}; /* black */
+static const char _red_blu[] = {0x1b, '[', '7', ';', '3', '1', ';', '4', '4', 'm', 0}; /* red */
+static const char _grn_blu[] = {0x1b, '[', '7', ';', '3', '2', ';', '4', '4', 'm', 0}; /* green */
+static const char _ylw_blu[] = {0x1b, '[', '7', ';', '3', '3', ';', '4', '4', 'm', 0}; /* yellow */
+static const char _blu_blu[] = {0x1b, '[', '7', ';', '3', '4', ';', '4', '4', 'm', 0}; /* blue */
+static const char _pur_blu[] = {0x1b, '[', '7', ';', '3', '5', ';', '4', '4', 'm', 0}; /* purple */
+static const char _cya_blu[] = {0x1b, '[', '7', ';', '3', '6', ';', '4', '4', 'm', 0}; /* cyan */
+static const char _wht_blu[] = {0x1b, '[', '1', ';', '3', '9', ';', '4', '4', 'm', 0}; /* bold white */
+
+// \\033[7;36;40m  - black text on cyan
+// \\033[1;36;49m  - bold cyan
 
 
 #define c_paintf(color, ...) do { \
@@ -72,7 +83,7 @@ static const char blk_wht[] = {0x1b, '[', '7', ';', '0', '1', 'm', 0}; /* bold w
 #define c_paintf_inv_b(...)    c_paintf(b_inv, __VA_ARGS__)
 #define c_paintf_udl_b(...)    c_paintf(b_udl, __VA_ARGS__)
 
-/* bold */
+/* blk on ... */
 #define c_paintf_blk_nrm(...)    c_paintf(blk_nrm, __VA_ARGS__)
 #define c_paintf_blk_red(...)    c_paintf(blk_red, __VA_ARGS__)
 #define c_paintf_blk_grn(...)    c_paintf(blk_grn, __VA_ARGS__)
@@ -82,6 +93,17 @@ static const char blk_wht[] = {0x1b, '[', '7', ';', '0', '1', 'm', 0}; /* bold w
 #define c_paintf_blk_pur(...)    c_paintf(blk_pur, __VA_ARGS__)
 #define c_paintf_blk_cya(...)    c_paintf(blk_cya, __VA_ARGS__)
 #define c_paintf_blk_wht(...)    c_paintf(blk_wht, __VA_ARGS__)
+
+/* blk on ... */
+#define c_paintf_nrm_blu(...)    c_paintf(_nrm_blu, __VA_ARGS__)
+#define c_paintf_red_blu(...)    c_paintf(_red_blu, __VA_ARGS__)
+#define c_paintf_grn_blu(...)    c_paintf(_grn_blu, __VA_ARGS__)
+#define c_paintf_blk_blu(...)    c_paintf(_blk_blu, __VA_ARGS__)
+#define c_paintf_ylw_blu(...)    c_paintf(_ylw_blu, __VA_ARGS__)
+#define c_paintf_blu_blu(...)    c_paintf(_blu_blu, __VA_ARGS__)
+#define c_paintf_pur_blu(...)    c_paintf(_pur_blu, __VA_ARGS__)
+#define c_paintf_cya_blu(...)    c_paintf(_cya_blu, __VA_ARGS__)
+#define c_paintf_wht_blu(...)    c_paintf(_wht_blu, __VA_ARGS__)
 
 #define logc      c_paintf_blu
 #define logwarnc  c_paintf_ylw
