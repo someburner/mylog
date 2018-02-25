@@ -38,6 +38,11 @@ CLR_OFFETS_MAP(XX)
 CLR_OFFETS_MAP(XX)
 #undef XX
 
+/* bold white on ... */
+#define XX(num, unames, lnames, fch) static const char bwht_on_##lnames##_[] = {0x1b,'[', '1', ';', '3', '9', ';', '4', fch, 'm', 0};
+CLR_OFFETS_MAP(XX)
+#undef XX
+
 /* ... on blu */
 #define XX(num, unames, lnames, fch) static const char _##lnames##_on_blu[] = {0x1b,'[', '1', ';', '3', fch, ';', '4', '4', 'm', 0};
 CLR_OFFETS_MAP(XX)
@@ -114,18 +119,25 @@ static const char _inv_bld[] = {0x1b, '[', '1', ';', '0', '7', 'm', 0}; /* inver
 #define c_paintf_wht_blu(...)    c_paintf(wht_on_blu_, __VA_ARGS__)
 #define c_paintf_wht_pur(...)    c_paintf(wht_on_pur_, __VA_ARGS__)
 #define c_paintf_wht_cya(...)    c_paintf(wht_on_cya_, __VA_ARGS__)
-#define c_paintf_wht_wht(...)    c_paintf(wht_on_wht_, __VA_ARGS__)
+
+/* bold wht on ... */
+#define c_paintf_bwht_nrm(...)    c_paintf(bwht_on_nrm_, __VA_ARGS__)
+#define c_paintf_bwht_red(...)    c_paintf(bwht_on_red_, __VA_ARGS__)
+#define c_paintf_bwht_grn(...)    c_paintf(bwht_on_grn_, __VA_ARGS__)
+#define c_paintf_bwht_blk(...)    c_paintf(bwht_on_blk_, __VA_ARGS__)
+#define c_paintf_bwht_ylw(...)    c_paintf(bwht_on_ylw_, __VA_ARGS__)
+#define c_paintf_bwht_blu(...)    c_paintf(bwht_on_blu_, __VA_ARGS__)
+#define c_paintf_bwht_pur(...)    c_paintf(bwht_on_pur_, __VA_ARGS__)
+#define c_paintf_bwht_cya(...)    c_paintf(bwht_on_cya_, __VA_ARGS__)
 
 /* ... on blu */
 #define c_paintf_nrm_blu(...)    c_paintf(_nrm_on_blu, __VA_ARGS__)
 #define c_paintf_red_blu(...)    c_paintf(_red_on_blu, __VA_ARGS__)
 #define c_paintf_grn_blu(...)    c_paintf(_grn_on_blu, __VA_ARGS__)
-#define c_paintf_blk_blu(...)    c_paintf(_blk_on_blu, __VA_ARGS__)
 #define c_paintf_ylw_blu(...)    c_paintf(_ylw_on_blu, __VA_ARGS__)
 #define c_paintf_blu_blu(...)    c_paintf(_blu_on_blu, __VA_ARGS__)
 #define c_paintf_pur_blu(...)    c_paintf(_pur_on_blu, __VA_ARGS__)
 #define c_paintf_cya_blu(...)    c_paintf(_cya_on_blu, __VA_ARGS__)
-#define c_paintf_wht_blu(...)    c_paintf(_wht_on_blu, __VA_ARGS__)
 
 #define logc      c_paintf_blu
 #define logwarnc  c_paintf_ylw
