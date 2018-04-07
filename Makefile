@@ -65,6 +65,7 @@ clean:
 
 install:
 	mkdir -p $(INSTALL_INC_DIR)
+	cp -f mylog.h $(INSTALL_INC_DIR)/mylog.h
 	cp -f mylog.hpp $(INSTALL_INC_DIR)/mylog.hpp
 	cp -f $(TARGET) $(INSTALL_LIB_PATH)
 
